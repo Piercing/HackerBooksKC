@@ -12,6 +12,7 @@
 		52B1F0601C16F5F50077FF52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52B1F05E1C16F5F50077FF52 /* Main.storyboard */; };
 		52B1F0621C16F5F50077FF52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52B1F0611C16F5F50077FF52 /* Assets.xcassets */; };
 		52B1F0651C16F5F50077FF52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52B1F0631C16F5F50077FF52 /* LaunchScreen.storyboard */; };
+		52B1F06E1C16F6E60077FF52 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1F06D1C16F6E60077FF52 /* Book.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		52B1F0611C16F5F50077FF52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52B1F0641C16F5F50077FF52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52B1F0661C16F5F50077FF52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52B1F06D1C16F6E60077FF52 /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,47 @@
 		52B1F0591C16F5F50077FF52 /* HackerBooks */ = {
 			isa = PBXGroup;
 			children = (
+				52B1F06F1C16F7680077FF52 /* Utils */,
+				52B1F06C1C16F6BD0077FF52 /* Models */,
+				52B1F0701C16F7AB0077FF52 /* App */,
+				52B1F0711C16F7E00077FF52 /* ViewControllers */,
+			);
+			path = HackerBooks;
+			sourceTree = "<group>";
+		};
+		52B1F06C1C16F6BD0077FF52 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				52B1F06D1C16F6E60077FF52 /* Book.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		52B1F06F1C16F7680077FF52 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		52B1F0701C16F7AB0077FF52 /* App */ = {
+			isa = PBXGroup;
+			children = (
 				52B1F05A1C16F5F50077FF52 /* AppDelegate.swift */,
-				52B1F05C1C16F5F50077FF52 /* ViewController.swift */,
 				52B1F05E1C16F5F50077FF52 /* Main.storyboard */,
 				52B1F0611C16F5F50077FF52 /* Assets.xcassets */,
 				52B1F0631C16F5F50077FF52 /* LaunchScreen.storyboard */,
 				52B1F0661C16F5F50077FF52 /* Info.plist */,
 			);
-			path = HackerBooks;
+			name = App;
+			sourceTree = "<group>";
+		};
+		52B1F0711C16F7E00077FF52 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				52B1F05C1C16F5F50077FF52 /* ViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +173,7 @@
 			files = (
 				52B1F05D1C16F5F50077FF52 /* ViewController.swift in Sources */,
 				52B1F05B1C16F5F50077FF52 /* AppDelegate.swift in Sources */,
+				52B1F06E1C16F6E60077FF52 /* Book.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
