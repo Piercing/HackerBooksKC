@@ -2,110 +2,85 @@
 //  Library.swift
 //  HackerBooks
 //
-//  Created by MacBook Pro on 9/12/15.
+//  Created by MacBook Pro on 8/12/15.
 //  Copyright © 2015 JCMerlos. All rights reserved.
 //
 
 import UIKit
 
-class Library  {
+class Library {
     
-    var books: [Book] = []
-    var tags: [String] = []
-    
-    
-    static let urlHTTPS = "https://t.co/K9ziV0z3SJ"
-    static let urlLOCAL = "books"
-    
-    var booksCount:Int {
-        get {
-            let count: Int = self.books.count
-            return count
-        }
-    }
-    
-    func getJSON(data: NSData){
-        
-        do{
-            let jsonSerialization = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSArray
-            
-            for items in jsonSerialization {
+    static let urlHTTPS      = "https://t.co/K9ziV0z3SJ";
+    static let urlLocal      = "books";
+ 
+    // Obtener el JSON
+    func getJSON(data: NSData) {
+        do {
+            let serializerJSON = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+ 
+            for element in serializerJSON  {
                 
-                let authors = (items["authors"] as! String).componentsSeparatedByString(",")
-                let tags    = (items["tags"] as! String).componentsSeparatedByString(",")
-                let book    = Book(title: items["title"] as! String,
-                    authors : authors,
-                    tags    : tags,
-                    urlImage: NSURL(string: items["image_url"] as! String)!,
-                    urlPDF  : NSURL(string: items["pdf_url"] as! String)!)
+                let authors = (element["authors"] as! String).componentsSeparatedByString(",")
+                let tags = (element["tags"] as! String).componentsSeparatedByString(",")
                 
-                self.tags.appendContentsOf(tags)
-                self.books.append(book)
+                let book = Book(title: element["title"] as! String,
+                    authors: authors,
+                    tags:tags,
+                    urlImage: NSURL(string: element["image_url"] as! String)!,
+                    urlPDF:  NSURL(string: element["pdf_url"] as! String)!)
+                
+                Utils.util.tags.appendContentsOf(tags)
+                Utils.util.books.append(book)
             }
             
-            self.tags = Utils.util.deleteDuplicateTags()
-        }catch let error as NSError {
-            print(error.localizedDescription)
+            Utils.util.tags = Utils.util.deleteRepeatedTags()
+        } catch let error as NSError {
+            NSLog("%@", error.description)
         }
-        
     }
     
-    // Leer datos
-    func readData()-> Void{
-        
-        // Averiguamos si tenemos los datos
+    // Leer datos de disco
+    func readData() -> Void {
         let userDefaults = NSUserDefaults.standardUserDefaults()
-        if let data = userDefaults.dataForKey(Library.urlLOCAL){
-            
+        if let data = userDefaults.dataForKey(Library.urlLocal) {
             self.getJSON(data)
-            self.tags.sortInPlace()
-            self.books.sortInPlace({(a,b) -> Bool in
+            Utils.util.tags.sortInPlace()
+            Utils.util.books.sortInPlace({ (a, b) -> Bool in
                 return a.title.compare(b.title) == NSComparisonResult.OrderedAscending
             })
-            // Si no, los descargamos en segundo plano
-        }else{
-            
-            let priorityBackground = DISPATCH_QUEUE_PRIORITY_BACKGROUND
-            dispatch_async(dispatch_get_global_queue(priorityBackground, 0),{
+        }
+            // si no, los descargamos en segundo plano
+        else {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
                 
                 if let urlPath =  NSURL(string: Library.urlHTTPS) {
-                    let data : NSData = NSData(contentsOfURL: urlPath)!
                     
+                    let data : NSData = NSData(contentsOfURL: urlPath)!
                     self.getJSON(data)
-                    self.books.sortInPlace({ (a, b) -> Bool in
+                    
+                    Utils.util.books.sortInPlace({ (a, b) -> Bool in
                         return a.title.compare(b.title) == NSComparisonResult.OrderedAscending
                     })
-                    self.tags.sortInPlace()
+                    Utils.util.tags.sortInPlace()
                     
-                    // Guardo imágenes en local
-                    for book in self.books {
+                    // Guardamos imágenes
+                    for item in Utils.util.books {
                         
-                        let loadImageData : NSData = NSData(contentsOfURL: book.urlImage)!
-                        let imageFile = book.urlImage.path?.componentsSeparatedByString("/")
-                        if let imagePath = imageFile?.last {
-                            Utils.util.writeImageToFile(imagePath, data: loadImageData)
+                        let imageData : NSData = NSData(contentsOfURL: item.urlImage)!
+                        let imageFileName = item.urlImage.path?.componentsSeparatedByString("/")
+                        if let imagePath = imageFileName?.last {
+                            Utils.util.writeImage(imagePath, data: imageData)
                         }
                     }
-                    
-                    // Guardo los datos
+                    // Guardamos datos
                     dispatch_async(dispatch_get_main_queue(), {
-                        userDefaults.setValue(data, forKey: Library.urlLOCAL)
+                        userDefaults.setValue(data, forKey: Library.urlLocal)
                         userDefaults.synchronize()
                     })
                 }
             })
         }
-    }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    }   
     
 }
 

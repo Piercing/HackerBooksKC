@@ -2,76 +2,92 @@
 //  LibraryTableViewController.swift
 //  HackerBooks
 //
-//  Created by MacBook Pro on 9/12/15.
+//  Created by MacBook Pro on 8/12/15.
 //  Copyright © 2015 JCMerlos. All rights reserved.
 //
 
 import UIKit
 
+import UIKit
+
 class LibraryTableViewController: UITableViewController {
     
+    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
     let library = Library()
-    let util = Utils()
-
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.library.readData()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return self.library.tags.count
+        return Utils.util.tags.count
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        let tag = self.library.tags[section]
-        if let booksByTag = self.util.booksByTag(tag){
+        let tag = Utils.util.tags[section]
+        if let booksByTag = Utils.util.booksByTag(tag) {
             return booksByTag.count
         }
         return 0
     }
-
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.library.tags[section]
-    }
     
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return Utils.util.tags[section]
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        // Configure the cell...
-        let tag = self.library.tags[indexPath.section]
-        let bookByTag = self.util.booksByTag(tag)
-        let book = bookByTag?[indexPath.row]
+        
+        let tag = Utils.util.tags[indexPath.section]
+        let booksForTag = Utils.util.booksByTag(tag)
+        let book = booksForTag?[indexPath.row];
+        
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! BookTableViewCell
-
+        
+        
         cell.labelTitle.text = book?.title
         cell.labelAuthor.text = book?.authors.joinWithSeparator(",")
-        if let imageURL = util.getPath((book?.urlImage)!){
-            cell.imageBook.image = UIImage(contentsOfFile: imageURL)
+        if let imagePath = Utils.util.getPath((book?.urlImage)!) {
+            cell.imageBook.image = UIImage(contentsOfFile: imagePath)
         }
-
         return cell
     }
-
-
+    
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60.0
+        return 40.0
     }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = CGRectMake(10, 0, tableView.frame.size.width, 40.0)
+        let view = UIView()
+        let title = UILabel(frame: label)
+        title.textColor = UIColor.whiteColor()
+        title.text = Utils.util.tags[section].uppercaseString
+        view.backgroundColor = UIColor(colorLiteralRed: 77.0/255.0, green: 66.0/255.0, blue: 22.0/255.0, alpha: 0.7)
+        view.addSubview(title)
+        return view
+    }
+    
+    
+    
+}
     
     /*
     // Override to support conditional editing of the table view.
@@ -118,4 +134,4 @@ class LibraryTableViewController: UITableViewController {
     }
     */
 
-}
+

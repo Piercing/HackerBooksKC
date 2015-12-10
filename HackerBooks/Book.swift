@@ -2,7 +2,7 @@
 //  Book.swift
 //  HackerBooks
 //
-//  Created by JC Merlos Albarracín on 8/12/15.
+//  Created by MacBook Pro on 8/12/15.
 //  Copyright © 2015 JCMerlos. All rights reserved.
 //
 

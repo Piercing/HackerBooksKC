@@ -2,55 +2,57 @@
 //  Utils.swift
 //  HackerBooks
 //
-//  Created by MacBook Pro on 9/12/15.
+//  Created by MacBook Pro on 8/12/15.
 //  Copyright © 2015 JCMerlos. All rights reserved.
 //
 
 import UIKit
 
-class Utils  {
+class Utils {
     
     static var util = Utils()
     
     var tags: [String] = []
     var books: [Book] = []
     
-    func writeImageToFile(fileName: String, data:NSData) ->Bool{
-        let filePaths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory,
-            NSSearchPathDomainMask.UserDomainMask, true)
+    func writeImage(fileName: String, data: NSData) ->  Bool {
+        let filePaths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
         let documentaryDirectory = filePaths[0]
-        let dirPath = documentaryDirectory.stringByAppendingString("/" + fileName)
-        return data.writeToFile(dirPath, atomically: true)
+        let path = documentaryDirectory.stringByAppendingString("/" + fileName)
+        return data.writeToFile(path, atomically: true)
     }
-    
-    
-    func deleteDuplicateTags() -> [String] {
-        
-        var Tags = [String]()
-        
-        for tag in self.tags {
-            let delteTag = tag.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-            if !Tags.contains(delteTag) {
-                Tags.append(delteTag)
-            }
-        }
-        return Tags
-    }
-    
     
     func getPath(urlImage: NSURL) -> String?{
-        let path = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-        let documentDirectoryPath = path[0]
+        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        let documentPath = paths[0]
         let imageFile = urlImage.path?.componentsSeparatedByString("/")
         if let imagePath = imageFile?.last {
-            
-            return documentDirectoryPath.stringByAppendingString("/" + imagePath)
+            return documentPath.stringByAppendingString("/" + imagePath)
         }
         return nil
     }
     
+    func deleteRepeatedTags() -> [String] {
+        
+        var tags = [String]()
+        
+        for tag in self.tags {
+            let deleteTag = tag.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            if !tags.contains(deleteTag) {
+                tags.append(deleteTag)
+            }
+        }
+        return tags
+    }
     
-    func bookCountForTag (tag:String) -> Int {
+    func booksCount() ->Int {
+        
+        let count: Int = Utils.util.books.count
+        return count
+        
+    }
+    
+    func countByTag (tag:String) -> Int {
         if let index = tags.indexOf(tag) {
             return index
         }
@@ -70,6 +72,5 @@ class Utils  {
         }
         return nil
     }
-    
     
 }
