@@ -1,21 +1,38 @@
 //
-//  ViewWebViewController.swift
+//  BookDetailsViewController.swift
 //  HackerBooks
 //
-//  Created by MacBook Pro on 8/12/15.
+//  Created by MacBook Pro on 10/12/15.
 //  Copyright © 2015 JCMerlos. All rights reserved.
 //
 
 import UIKit
 
-class ViewWeb: UIViewController {
+class BookDetailsViewController: UIViewController {
 
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var labelTitle: UILabel!
     
-    @IBAction func buttonDone(sender: UIBarButtonItem) {
+    @IBOutlet weak var labelAuthors: UILabel!
+    
+    @IBOutlet weak var labelTags: UILabel!
+    
+    @IBOutlet weak var imageBook: UIImageView!
+    
+    @IBAction func buttonViewPDF(sender: UIButton) {
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        let ourStoryBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let viewPDF = ourStoryBoard.instantiateViewControllerWithIdentifier("viewPDF") as! ViewWeb
+        
+        self.presentViewController(viewPDF, animated: true, completion: nil)
     }
+    
+    @IBAction func checkFavorite(sender: UISwitch) {
+        
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

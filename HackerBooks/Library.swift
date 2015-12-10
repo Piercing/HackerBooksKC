@@ -10,8 +10,8 @@ import UIKit
 
 class Library {
     
-    static let urlHTTPS      = "https://t.co/K9ziV0z3SJ";
-    static let urlLocal      = "books";
+    static let urlHTTPS  = "https://t.co/K9ziV0z3SJ"
+    static let urlLocal  = "books"
  
     // Obtener el JSON
     func getJSON(data: NSData) {
@@ -81,7 +81,6 @@ class Library {
             })
         }
     }   
-    
 }
 
 
