@@ -110,15 +110,15 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfm-7c-wH6">
                                 <rect key="frame" x="20" y="78" width="560" height="21"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kRt-gl-ovb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kRt-gl-ovb">
                                 <rect key="frame" x="0.0" y="251" width="600" height="349"/>
                                 <animations/>
                             </imageView>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oOE-VS-tdR">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oOE-VS-tdR">
                                 <rect key="frame" x="121" y="207" width="51" height="31"/>
                                 <animations/>
                                 <connections>
@@ -129,7 +129,7 @@
                                 <rect key="frame" x="20" y="212" width="61" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFZ-qD-bch">
@@ -145,18 +145,18 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gNs-df-tlL" firstAttribute="top" secondItem="Bfm-7c-wH6" secondAttribute="bottom" constant="22" id="0ZY-bE-m7I"/>
+                            <constraint firstItem="Bfm-7c-wH6" firstAttribute="trailing" secondItem="gNs-df-tlL" secondAttribute="trailing" id="0fJ-jP-vzj"/>
+                            <constraint firstItem="gNs-df-tlL" firstAttribute="top" secondItem="Bfm-7c-wH6" secondAttribute="bottom" constant="22" id="0fZ-ym-WnS"/>
+                            <constraint firstItem="Bfm-7c-wH6" firstAttribute="top" secondItem="MrA-XU-PYJ" secondAttribute="bottom" constant="58" id="286-Xn-QDE"/>
                             <constraint firstAttribute="trailing" secondItem="kRt-gl-ovb" secondAttribute="trailing" id="8df-cp-DKP"/>
-                            <constraint firstItem="gNs-df-tlL" firstAttribute="leading" secondItem="Bfm-7c-wH6" secondAttribute="leading" id="9If-b1-kmS"/>
                             <constraint firstItem="kRt-gl-ovb" firstAttribute="bottom" secondItem="EYG-Tz-QKs" secondAttribute="top" id="ApB-l0-WvW"/>
                             <constraint firstItem="kRt-gl-ovb" firstAttribute="leading" secondItem="470-rr-XDI" secondAttribute="leading" id="DKl-yt-HHa"/>
                             <constraint firstItem="oOE-VS-tdR" firstAttribute="top" secondItem="iIQ-Kl-06h" secondAttribute="bottom" constant="20" id="E16-Cl-CSw"/>
                             <constraint firstItem="oOE-VS-tdR" firstAttribute="leading" secondItem="jNd-f2-DA6" secondAttribute="trailing" constant="40" id="GQb-5d-Q9h"/>
                             <constraint firstItem="WFZ-qD-bch" firstAttribute="top" secondItem="470-rr-XDI" secondAttribute="top" constant="213" id="HTZ-ka-1qs"/>
+                            <constraint firstItem="Bfm-7c-wH6" firstAttribute="leading" secondItem="gNs-df-tlL" secondAttribute="leading" id="Iae-lc-pjN"/>
                             <constraint firstItem="kRt-gl-ovb" firstAttribute="top" secondItem="jNd-f2-DA6" secondAttribute="bottom" constant="18" id="LhX-C4-NeP"/>
                             <constraint firstItem="oOE-VS-tdR" firstAttribute="centerY" secondItem="jNd-f2-DA6" secondAttribute="centerY" id="LvO-um-xG0"/>
-                            <constraint firstItem="Bfm-7c-wH6" firstAttribute="top" secondItem="MrA-XU-PYJ" secondAttribute="bottom" constant="14" id="TCD-L8-Ist"/>
-                            <constraint firstItem="iIQ-Kl-06h" firstAttribute="trailing" secondItem="Bfm-7c-wH6" secondAttribute="trailing" id="TJE-VA-vKb"/>
                             <constraint firstItem="iIQ-Kl-06h" firstAttribute="centerX" secondItem="kRt-gl-ovb" secondAttribute="centerX" id="Tko-mC-pWD"/>
                             <constraint firstItem="iIQ-Kl-06h" firstAttribute="trailing" secondItem="gNs-df-tlL" secondAttribute="trailing" id="ffq-wL-h3i"/>
                             <constraint firstItem="iIQ-Kl-06h" firstAttribute="leading" secondItem="jNd-f2-DA6" secondAttribute="leading" id="mA2-1F-7Rh"/>

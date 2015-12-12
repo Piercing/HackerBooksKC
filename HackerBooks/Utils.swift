@@ -63,7 +63,7 @@ class Utils {
     func booksByTag (tag:String) -> [Book]? {
         var booksMatchByTag : [Book] = [Book]()
         for book in self.books {
-            if (book.tags.contains(tag)  || book.tags.contains(" " + tag)) {
+            if (book.tags.contains(tag) || book.tags.contains(" " + tag)) {
                 booksMatchByTag.append(book)
             }
         }
