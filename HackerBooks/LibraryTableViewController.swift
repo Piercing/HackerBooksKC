@@ -109,7 +109,7 @@ class LibraryTableViewController: UITableViewController {
             visorBook.tagsBook = (book?.tags)!
             
             if let imagePath = Utils.util.getPath((book?.urlImage)!) {
-                visorBook.imageBook = UIImage(contentsOfFile: imagePath)
+                visorBook.imagBook = UIImage(contentsOfFile: imagePath)!
             }
         }
     }

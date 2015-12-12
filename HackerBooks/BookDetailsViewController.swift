@@ -19,56 +19,63 @@ class BookDetailsViewController: UIViewController {
     var tagsBook = [String]()
     var imagBook = UIImage()
     
-    //            visorBook.labelTitle.text = book?.title
-    //            visorBook.labelAuthors.text = book?.authors.joinWithSeparator(",")
-    //            visorBook.labelTags.text = book?.tags.joinWithSeparator(",")
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.labelTitle.text = titleBook
+        
+        self.labelAuthors.text = authorsBook.joinWithSeparator(",")
+        
+        self.labelTags.text = tagsBook.joinWithSeparator(",")
+        
+        self.imageBook.image = imagBook
+        
+    }
+    
+    @IBOutlet weak var imageBook: UIImageView!
     
     @IBOutlet weak var labelTitle: UILabel!{
         didSet {
             labelTitle.textColor = UIColor.blueColor()
-            labelTitle.text = titleBook
+            //labelTitle.text = titleBook
         }
     }
- 
+    
     
     @IBOutlet weak var labelAuthors: UILabel!{
         didSet {
             labelAuthors.textColor = UIColor.purpleColor()
-            labelAuthors.text = authorsBook.joinWithSeparator(",")
+           // labelAuthors.text = authorsBook.joinWithSeparator(",")
         }
     }
-
+    
     
     @IBOutlet weak var labelTags: UILabel!{
         didSet {
             labelTags.tintColor = UIColor.magentaColor()
-            labelTags.text = tagsBook.joinWithSeparator(",")
+           // labelTags.text = tagsBook.joinWithSeparator(",")
         }
     }
     
-    @IBOutlet weak var imageBook: UIImage!{
-        
-        didSet{
-            imageBook = imagBook
-        }
-    }
+
     
     
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
-//    
-//    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
-//        labelTitle = UILabel()
-//        labelAuthors = UILabel()
-//        labelTags = UILabel()
-//        imageBook = UIImageView()
-//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-//    }
-//    
-//    convenience  init() {
-//        self.init(nibName: nil, bundle: nil)
-//    }
+    //    required init?(coder aDecoder: NSCoder) {
+    //        super.init(coder: aDecoder)
+    //    }
+    //
+    //    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    //        labelTitle = UILabel()
+    //        labelAuthors = UILabel()
+    //        labelTags = UILabel()
+    //        imageBook = UIImageView()
+    //        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    //    }
+    //
+    //    convenience  init() {
+    //        self.init(nibName: nil, bundle: nil)
+    //    }
     
     
     
@@ -84,12 +91,12 @@ class BookDetailsViewController: UIViewController {
         
         
     }
- 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
+    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//        // Do any additional setup after loading the view.
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
