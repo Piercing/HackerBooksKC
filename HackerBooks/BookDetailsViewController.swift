@@ -15,6 +15,7 @@ class BookDetailsViewController: UIViewController {
     var authorsBook = [String]()
     var tagsBook = [String]()
     var imagBook = UIImage()
+    var pdfBook = String()
     
 
     @IBOutlet weak var imageBook: UIImageView!{
@@ -65,16 +66,26 @@ class BookDetailsViewController: UIViewController {
     }
     
     
-    /*
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//    // Get the new view controller using segue.destinationViewController.
+//    // Pass the selected object to the new view controller.
+//    }
+
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "toViewPDF"{
+            
+            let visorPDF: ViewWeb = segue.destinationViewController as! ViewWeb
+            visorPDF.pathPDF = pdfBook
+        }
     }
-    */
-    
     
     
     

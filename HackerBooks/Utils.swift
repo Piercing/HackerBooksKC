@@ -32,6 +32,7 @@ class Utils {
         return nil
     }
     
+    
     func deleteRepeatedTags() -> [String] {
         
         var tags = [String]()

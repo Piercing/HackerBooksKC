@@ -35,9 +35,10 @@ class Library {
             
             Utils.util.tags = Utils.util.deleteRepeatedTags()
         } catch let error as NSError {
-            NSLog("%@", error.description)
+            NSLog("%@", error.localizedDescription)
         }
     }
+    
     
     // Leer datos de disco
     func readData() -> Void {
