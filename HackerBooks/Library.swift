@@ -10,8 +10,8 @@ import UIKit
 
 class Library {
     
-    static let urlHTTPS      = "https://t.co/K9ziV0z3SJ";
-    static let urlLocal      = "books";
+    static let urlHTTPS  = "https://t.co/K9ziV0z3SJ"
+    static let urlLocal  = "books"
  
     // Obtener el JSON
     func getJSON(data: NSData) {
@@ -35,9 +35,10 @@ class Library {
             
             Utils.util.tags = Utils.util.deleteRepeatedTags()
         } catch let error as NSError {
-            NSLog("%@", error.description)
+            NSLog("%@", error.localizedDescription)
         }
     }
+    
     
     // Leer datos de disco
     func readData() -> Void {
@@ -72,6 +73,7 @@ class Library {
                             Utils.util.writeImage(imagePath, data: imageData)
                         }
                     }
+                    
                     // Guardamos datos
                     dispatch_async(dispatch_get_main_queue(), {
                         userDefaults.setValue(data, forKey: Library.urlLocal)
@@ -81,7 +83,6 @@ class Library {
             })
         }
     }   
-    
 }
 
 

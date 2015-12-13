@@ -12,15 +12,15 @@ import UIKit
 
 class LibraryTableViewController: UITableViewController {
     
-    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    
+    var books: [Book] = []
     let library = Library()
+    var bookSelected : Int = 0
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // cargamos los datos leídos
         self.library.readData()
     }
     
@@ -33,12 +33,10 @@ class LibraryTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return Utils.util.tags.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         let tag = Utils.util.tags[section]
         if let booksByTag = Utils.util.booksByTag(tag) {
             return booksByTag.count
@@ -53,14 +51,11 @@ class LibraryTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        
         let tag = Utils.util.tags[indexPath.section]
         let booksForTag = Utils.util.booksByTag(tag)
-        let book = booksForTag?[indexPath.row];
-        
+        let book = booksForTag?[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! BookTableViewCell
-        
         
         cell.labelTitle.text = book?.title
         cell.labelAuthor.text = book?.authors.joinWithSeparator(",")
@@ -85,53 +80,82 @@ class LibraryTableViewController: UITableViewController {
         return view
     }
     
+    //    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    //
+    //        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    //        bookSelected = indexPath.row
+    //
+    //        self.performSegueWithIdentifier("toBookDetails", sender: bookSelected)
+    //
+    //    }
     
+    // MARK: - Navigation
     
-}
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "toBookDetails"{
+            
+            
+            let visorBook: BookDetailsViewController = segue.destinationViewController as! BookDetailsViewController
+            let indexPath = self.tableView.indexPathForSelectedRow
+            
+            let tag = Utils.util.tags[indexPath!.section]
+            let booksForTag = Utils.util.booksByTag(tag)
+            let book = booksForTag?[indexPath!.row]
+            
+            visorBook.titleBook = (book?.title)!
+            visorBook.authorsBook = (book?.authors)!
+            visorBook.tagsBook = (book?.tags)!
+            
+            if let pdfPath = Utils.util.getPath((book?.urlPDF)!){
+                visorBook.pdfBook = String(UTF8String: pdfPath)!
+            }
+            
+            
+            if let imagePath = Utils.util.getPath((book?.urlImage)!) {
+                visorBook.imagBook = UIImage(contentsOfFile: imagePath)!
+            }
+        }
+    }
     
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    // Return false if you do not want the specified item to be editable.
+    return true
     }
     */
-
+    
     /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    if editingStyle == .Delete {
+    // Delete the row from the data source
+    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    } else if editingStyle == .Insert {
+    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }
     }
     */
-
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    
     }
     */
-
+    
     /*
     // Override to support conditional rearranging of the table view.
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    // Return false if you do not want the item to be re-orderable.
+    return true
     }
     */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+    
+    
+}
 
 

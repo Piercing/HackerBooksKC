@@ -1,5 +1,5 @@
 //
-//  ViewWebViewController.swift
+//  vewViewViewController.swift
 //  HackerBooks
 //
 //  Created by MacBook Pro on 8/12/15.
@@ -10,14 +10,44 @@ import UIKit
 
 class ViewWeb: UIViewController {
 
+    var book : Book?
+    let library = Library()
+    var pathPDF: String = ""
+    
     @IBOutlet weak var webView: UIWebView!
+    
+    @IBAction func buttonDone(sender: UIBarButtonItem) {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let directoriePath =  NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentDirectory = directoriePath[0]
+        let pdf = NSURL(fileURLWithPath: documentDirectory.stringByAppendingString(pathPDF))
+        webView.loadRequest(NSURLRequest(URL: pdf))
+        zoom()
     }
+    
+    func zoom(){
+        
+        webView.scalesPageToFit = true
+    }
+    
+    
+    func showPDF(){
+        
+        let pdfLoc = NSURL(fileURLWithPath:(NSBundle.mainBundle().pathForResource(pathPDF, ofType:"pdf"))!)
+        let request = NSURLRequest(URL: pdfLoc);
+        webView.loadRequest(request);
+    }
+    
+    
+        
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

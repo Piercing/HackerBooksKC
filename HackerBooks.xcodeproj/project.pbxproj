@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52380BE21C19D14400CE59CE /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52380BE11C19D14400CE59CE /* BookDetailsViewController.swift */; };
 		52B1F05B1C16F5F50077FF52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1F05A1C16F5F50077FF52 /* AppDelegate.swift */; };
 		52B1F05D1C16F5F50077FF52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B1F05C1C16F5F50077FF52 /* ViewController.swift */; };
 		52B1F0621C16F5F50077FF52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52B1F0611C16F5F50077FF52 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52380BE11C19D14400CE59CE /* BookDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDetailsViewController.swift; sourceTree = "<group>"; };
 		52B1F0571C16F5F50077FF52 /* HackerBooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerBooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B1F05A1C16F5F50077FF52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52B1F05C1C16F5F50077FF52 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,7 +72,6 @@
 				52B1F06C1C16F6BD0077FF52 /* Models */,
 				52B1F0701C16F7AB0077FF52 /* App */,
 				52B1F0711C16F7E00077FF52 /* ViewControllers */,
-				52B1F0761C17B3EC0077FF52 /* Views */,
 			);
 			path = HackerBooks;
 			sourceTree = "<group>";
@@ -111,15 +112,9 @@
 				52B1F05C1C16F5F50077FF52 /* ViewController.swift */,
 				52B1F0771C17B4620077FF52 /* ViewWeb.swift */,
 				52B1F07F1C18781A0077FF52 /* LibraryTableViewController.swift */,
+				52380BE11C19D14400CE59CE /* BookDetailsViewController.swift */,
 			);
 			name = ViewControllers;
-			sourceTree = "<group>";
-		};
-		52B1F0761C17B3EC0077FF52 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +193,7 @@
 				52B1F07C1C184FE30077FF52 /* Library.swift in Sources */,
 				52B1F05D1C16F5F50077FF52 /* ViewController.swift in Sources */,
 				52B1F05B1C16F5F50077FF52 /* AppDelegate.swift in Sources */,
+				52380BE21C19D14400CE59CE /* BookDetailsViewController.swift in Sources */,
 				52B1F0781C17B4620077FF52 /* ViewWeb.swift in Sources */,
 				52B1F06E1C16F6E60077FF52 /* Book.swift in Sources */,
 				52B1F0801C18781A0077FF52 /* LibraryTableViewController.swift in Sources */,
