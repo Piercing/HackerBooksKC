@@ -35,9 +35,10 @@ class Library {
             
             Utils.util.tags = Utils.util.deleteRepeatedTags()
         } catch let error as NSError {
-            NSLog("%@", error.description)
+            NSLog("%@", error.localizedDescription)
         }
     }
+    
     
     // Leer datos de disco
     func readData() -> Void {
@@ -72,6 +73,7 @@ class Library {
                             Utils.util.writeImage(imagePath, data: imageData)
                         }
                     }
+                    
                     // Guardamos datos
                     dispatch_async(dispatch_get_main_queue(), {
                         userDefaults.setValue(data, forKey: Library.urlLocal)

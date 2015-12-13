@@ -108,6 +108,11 @@ class LibraryTableViewController: UITableViewController {
             visorBook.authorsBook = (book?.authors)!
             visorBook.tagsBook = (book?.tags)!
             
+            if let pdfPath = Utils.util.getPath((book?.urlPDF)!){
+                visorBook.pdfBook = String(UTF8String: pdfPath)!
+            }
+            
+            
             if let imagePath = Utils.util.getPath((book?.urlImage)!) {
                 visorBook.imagBook = UIImage(contentsOfFile: imagePath)!
             }
