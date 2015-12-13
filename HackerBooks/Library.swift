@@ -73,6 +73,7 @@ class Library {
                             Utils.util.writeImage(imagePath, data: imageData)
                         }
                     }
+                    
                     // Guardamos datos
                     dispatch_async(dispatch_get_main_queue(), {
                         userDefaults.setValue(data, forKey: Library.urlLocal)
